@@ -13,8 +13,6 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static com.example.parkingsystemv1.Queue.sqsQueue.ReadRegistrationMessage;
-import static com.example.parkingsystemv1.Queue.sqsQueue.SendRegistrationMessage;
 
 public class Controller
 {

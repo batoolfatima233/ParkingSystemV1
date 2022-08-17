@@ -12,15 +12,17 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static com.example.parkingsystemv1.Controller.Controller.*;
 
 @Path("/end-point")
 public class resources {
+
     @POST
     @Path("/registration")
     public Response Registration(String payload) throws Exception {
-        try {
+
             Registration new_entry = new Gson().fromJson(payload, Registration.class);
 
             int result = doRegistration(new_entry);
@@ -29,23 +31,16 @@ public class resources {
                 return Response.status(400).entity("in valid input").build();
             } else if (result == 2) {
                 return Response.ok("already registered").build();
-            } else if (result == 3) {
+            } else //if (result == 3) {
                 return Response.ok("successfully registered").build();
-            } else {
-                return Response.status(400).entity("exception, couldn't enter register you please try again").build();
-            }
-
-        } catch (Exception ex) {
-            return Response.status(400).entity(ex.toString()).build();
-        }
     }
+
     @POST
     @Path("parking")
     public Response Parking(String payload) throws Exception {
-        try {
+        System.out.println(payload);
             parking new_status = new Gson().fromJson(payload, parking.class);
             int result = doParking(new_status);
-
             if (result == 1) {
                 return Response.status(400).entity("invalid data").build();
             } else if (result == 2) {
@@ -56,49 +51,31 @@ public class resources {
                 return Response.ok().status(200).entity("you have successfully parked in").build();
             } else if (result == 5) {
                 return Response.ok().status(200).entity("you have successfully parked out").build();
-            } else if (result == 6) {
-                return Response.status(400).entity("invalid").build();
-            } else if (result == 8) {
+            } else // if (result == 8)
+            {
                 return Response.status(400).entity("first register your car then do parking").build();
-            } else {
-                return Response.status(400).entity(result + "couldn't park the  act try again please").build();
             }
-        } catch (Exception ex) {
-            return Response.status(400).entity(ex.toString()).build();
-        }
     }
 
     @GET
     @Path("park_history")
     public Response History(@QueryParam("vehicle-name") String name) throws SQLException {
-        try
-        {
             Database db = new Database();
             int check = db.check_registration(name);
-            if( check == 1)
-            {
-                return Response.status(200).entity("this car is not registered yet").build();
-            }
-            else
-            {
+            if( check == 1) {
+                return Response.status(200).entity("this car is not registered yet").build();}
+            else {
                 String output = carHistory(name);
                 System.out.println(output);
-                if(output != "")
+                if(!Objects.equals(output, ""))
                 {
                     return Response.ok().status(400).entity(output).build();
                 }
                 else
                 {
-                    return Response.ok().status(400).entity("not parked yet, hence no parking history").build();
+                    return Response.status(200).entity("not parked yet, hence no parking history").build();
                 }
-
             }
-
-        }
-        catch(Exception ex)
-        {
-            return Response.status(200).entity(ex.toString()).build();
-        }
     }
 }
 

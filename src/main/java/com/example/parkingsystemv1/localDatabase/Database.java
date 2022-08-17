@@ -403,71 +403,144 @@ public class Database {
 //        }
     }
 
-    public ArrayList<String> checkAt1am()
+//    public ArrayList<String> checkAt1am()
+//    {
+//        ArrayList<String> array1 = new ArrayList<String>();
+//        ArrayList<String> array2 = new ArrayList<String>();
+//        try
+//        {
+//            String query = "Select * from registration_info";
+//            PreparedStatement st = con.prepareStatement(query);
+//            ResultSet rs1 = st.executeQuery();
+//
+//            while(rs1.next())
+//            {
+//                array1.add(rs1.getString("vehicle_number"));
+//            }
+//
+//            for(String s : array1)
+//            {
+//                System.out.println("vehicles get from db : "+ s);
+//            }
+//            System.out.println("\n");
+//
+//            for (String o : array1) {
+//                String query2 = "Select * from parking_info where vehicle_number=?";
+//                PreparedStatement st2 = con.prepareStatement(query2);
+//                st2.setString(1, o);
+//                ResultSet rs = st2.executeQuery();
+//                if (!rs.next()) // no entry in parking table yet
+//                {
+//                    // System.out.println("here1  "+ o.toString());
+//
+//                    System.out.println(o);
+//                    String  new_Query = "Select * from registration_info where vehicle_number =?";
+//                    PreparedStatement st3 = con.prepareStatement(new_Query);
+//                    st3.setString(1,o);
+//                    ResultSet rs3 = st3.executeQuery();
+//                    while(rs3.next())
+//                    {
+//                        array2.add(rs3.getString("email"));
+//                    }
+//
+//                    //System.out.println("email that not yet parked untill : "+ rs.getString("email"));
+//                }
+//                else
+//                {
+//                    rs.last();
+//                    String status = rs.getString("park_status");
+//                    System.out.println("here2  "+ status);
+//                    if (!status.equals("in"))
+//                    {
+//                        System.out.println("out from parking here3  "+rs.getString("email"));
+//                        array2.add(rs.getString("email"));
+//                        System.out.println(o.toString());
+//                    }
+//                }
+//            }
+//            System.out.println("doing to return");
+//            return array2;
+//            //System.out.println("returned from here");
+//        }
+//        catch(Exception ex)
+//        {
+//            ex.printStackTrace();
+//            return array2;
+//        }
+//    }
+public ArrayList<String> checkAt1am()
+{
+    ArrayList<String> array1 = new ArrayList<String>();
+    ArrayList<String> array2 = new ArrayList<String>();
+    try
     {
-        ArrayList<String> array1 = new ArrayList<String>();
-        ArrayList<String> array2 = new ArrayList<String>();
-        try
+        String query = "Select * from registration_info";
+        PreparedStatement st = con.prepareStatement(query);
+        ResultSet rs1 = st.executeQuery();
+
+        while(rs1.next())
         {
-            String query = "Select * from registration_info";
-            PreparedStatement st = con.prepareStatement(query);
-            ResultSet rs1 = st.executeQuery();
+            array1.add(rs1.getString("vehicle_number"));
+        }
 
-            while(rs1.next())
+        for(String s : array1)
+        {
+            System.out.println("vehicles get from db : "+ s);
+        }
+        System.out.println("\n");
+
+        for (String o : array1) {
+            String query2 = "Select * from parking_info where vehicle_number=?";
+            PreparedStatement st2 = con.prepareStatement(query2);
+            st2.setString(1, o);
+            ResultSet rs = st2.executeQuery();
+            if (!rs.next()) // no entry in parking table yet
             {
-                array1.add(rs1.getString("vehicle_number"));
-            }
 
-            for(String s : array1)
-            {
-                System.out.println("vehicles get from db : "+ s);
-            }
-            System.out.println("\n");
 
-            for (String o : array1) {
-                String query2 = "Select * from parking_info where vehicle_number=?";
-                PreparedStatement st2 = con.prepareStatement(query2);
-                st2.setString(1, o);
-                ResultSet rs = st2.executeQuery();
-                if (!rs.next()) // no entry in parking table yet
+                System.out.println(o);
+                String  new_Query = "Select * from registration_info where vehicle_number =?";
+                PreparedStatement st3 = con.prepareStatement(new_Query);
+                st3.setString(1,o);
+                ResultSet rs3 = st3.executeQuery();
+                while(rs3.next())
                 {
-                    // System.out.println("here1  "+ o.toString());
+                    array2.add(rs3.getString("email"));
+                }
 
-                    System.out.println(o);
-                    String  new_Query = "Select * from registration_info where vehicle_number =?";
-                    PreparedStatement st3 = con.prepareStatement(new_Query);
-                    st3.setString(1,o);
-                    ResultSet rs3 = st3.executeQuery();
-                    while(rs3.next())
+
+            }
+            else
+            {
+                rs.last();
+                String status = rs.getString("park_status");
+                System.out.println("here2  "+ status);
+                if (!status.equals("in"))
+                {
+                    String query5 = "Select * from registration_info where vehicle_number = ?";
+                    PreparedStatement st5 = con.prepareStatement(query5);
+                    st5.setString(1,o);
+                    ResultSet rs5 = st5.executeQuery();
+                    while(rs5.next())
                     {
-                        array2.add(rs3.getString("email"));
+                        System.out.println("out from parking here3  "+rs5.getString("email"));
+                        array2.add(rs5.getString("email"));
                     }
 
-                    //System.out.println("email that not yet parked untill : "+ rs.getString("email"));
-                }
-                else
-                {
-                    rs.last();
-                    String status = rs.getString("park_status");
-                    System.out.println("here2  "+ status);
-                    if (!status.equals("in"))
-                    {
-                        System.out.println("out from parking here3  "+rs.getString("email"));
-                        array2.add(rs.getString("email"));
-                        System.out.println(o.toString());
-                    }
+                    System.out.println(o.toString());
                 }
             }
-            System.out.println("doing to return");
-            return array2;
-            //System.out.println("returned from here");
         }
-        catch(Exception ex)
-        {
-            ex.printStackTrace();
-            return array2;
-        }
+        System.out.println("doing to return");
+        return array2;
+        //System.out.println("returned from here");
     }
+    catch(Exception ex)
+    {
+        ex.printStackTrace();
+        return array2;
+    }
+}
 
     public ArrayList<parking> check_history(String vehicle_number)
     {

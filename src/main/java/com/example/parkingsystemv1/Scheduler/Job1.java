@@ -17,7 +17,7 @@ import static com.example.parkingsystemv1.Notification.notification.sendEmail;
 
 public class Job1 implements Job
 {
-    public void execute(JobExecutionContext context) throws JobExecutionException
+    public void execute(JobExecutionContext context)
     {
 //        try
 //        {
@@ -29,19 +29,19 @@ public class Job1 implements Job
         }
         assert b != null;
         ArrayList<String> array = b.checkAt1am();
-            System.out.println("retured vro "+ array);
+
 
             for(String i : array )
             {
                 System.out.println("reached here");
                 System.out.println("get "+ i);
-                try {
-                    sendEmail(i,"1 am Alert","park your car");
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    sendEmail(i,"1 am Alert","park your car");
+//                } catch (MessagingException e) {
+//                    e.printStackTrace();
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
             }
             System.exit(0);
 //        }

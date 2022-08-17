@@ -33,4 +33,13 @@
     <servlet-name>RestfulReservations</servlet-name>
     <url-pattern>/*</url-pattern>
 </servlet-mapping>
+    <servlet>
+        <servlet-name>ParkingSystem</servlet-name>
+        <servlet-class>com.example.parkingsystemv1.Scheduler.Scheduler</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParkingSystem</servlet-name>
+        <url-pattern>/**</url-pattern>
+    </servlet-mapping>
 </web-app>

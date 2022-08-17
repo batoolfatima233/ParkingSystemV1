@@ -80,7 +80,7 @@ class DatabaseTest {
     void check_parking3() throws SQLException {
 
         // allowed
-        int actual= db.check_parking("leh-909");
+        int actual= db.check_parking("MNB-9090");
         assertEquals(3,actual);
     }
 
@@ -99,6 +99,7 @@ class DatabaseTest {
 
     @Test
     void checkAt1am() {
+        assertNotNull(db.checkAt1am().size());
     }
 
     @Test
@@ -114,6 +115,9 @@ class DatabaseTest {
         p1.setTime("23:23:52.746");
         p1.setDate("2022-08-07");
         arr.add(p2);
+
+        ArrayList a = db.check_history("GTL-5877");
+        assertNotNull(a.size());
         //assertEquals(arr.stream().map(m -> m.get(m).toString()),db.check_history("GTL-5877").stream().map(m -> m.getTime().toString()));
         //assertArrayEquals(arr.toArray(),db.check_history("GTL-5877").toArray());
     }

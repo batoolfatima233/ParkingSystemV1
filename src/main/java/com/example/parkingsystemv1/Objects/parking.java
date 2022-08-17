@@ -6,6 +6,14 @@ public class parking {
     public String date;
     public String time;
 
+
+    public parking(String vehicle_number, String park_status, String date, String time) {
+        this.vehicle_number = vehicle_number;
+        this.park_status = park_status;
+        this.date = date;
+        this.time = time;
+    }
+
     public parking(String vehicle_number, String park_status) {
         this.vehicle_number = vehicle_number;
         this.park_status = park_status;

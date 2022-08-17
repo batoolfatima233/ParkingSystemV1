@@ -70,15 +70,5 @@ public class Registration {
         this.vehicle_number = vehicle_number;
     }
 
-    @Override
-    public String toString() {
-        return "Registration{" +
-                "first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", email='" + email + '\'' +
-                ", contact_number='" + contact_number + '\'' +
-                ", garage_number=" + garage_number +
-                ", vehicle_number='" + vehicle_number + '\'' +
-                '}';
-    }
+
 }
