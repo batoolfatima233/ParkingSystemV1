@@ -203,6 +203,7 @@ public class Database {
         int check = check_registration(new_entry.vehicle_number);
         if (check == 2)
         {
+            System.out.println("already registered");
             return 1; // already registered
         }
         else
@@ -258,6 +259,7 @@ public class Database {
 
     if( check1 == 1)
     {
+        System.out.println("first do register your car");
         return 8; // first do registration then u can park
     }
     else
@@ -277,10 +279,12 @@ public class Database {
 
             if(check == 1 && new_status.park_status.toLowerCase().equals("in"))
             {
+                System.out.println("you are already parked in");
                 return 1 ; // you are already parked in
             }
             else if(check == 2 && new_status.park_status.toLowerCase().equals("out"))
             {
+                System.out.println("you are already parked out");
                 return 2; // already parked out
             }
 //            else if(check == 3 || (check == 1 && new_status.park_status.toLowerCase().equals("out") )||(check == 2 && new_status.park_status.toLowerCase().equals("in")) )
@@ -302,6 +306,7 @@ public class Database {
                             String id = rs.getString("id");
                             String email = rs.getString("email");
                             sendEmail(email,"Parking Status","u have successfully parked in , your id = "+id);
+                            System.out.println("u have successfully parked in");
                             return 3; // success
                         }
 //                        System.out.println("there , 13");
@@ -319,6 +324,7 @@ public class Database {
                             String id = rs.getString("id");
                             String email = rs.getString("email");
                             sendEmail(email,"Parking Status","u have successfully parked out , your id = "+id);
+                            System.out.println("u have successfully parked out");
                             return 4; // success
                         }
 //                        System.out.println("there , 14");
@@ -355,12 +361,15 @@ public class Database {
             ResultSet rs = st.executeQuery();
             if (rs.next() != false) // check previous parking status
             {
-                System.out.println(rs.last());
-                System.out.println(rs.getString("time"));
+                System.out.println("vehicle number in parking "+ vehicle_number);
+                //System.out.println(rs.last());
+                rs.last();
+                //System.out.println(rs.getString("time"));
                 if (rs.getString("park_status").toLowerCase().equals("in")) {
                     System.out.println("here 8080");
                     return 1; // already parked in
-                } else //if (rs.getString("park_status").toLowerCase() =="out")
+                }
+                else //if (rs.getString("park_status").toLowerCase() =="out")
                 {
                     System.out.println("here 6");
                     return 2; // already parked out
@@ -388,12 +397,12 @@ public class Database {
 
             if (rs.next() != false)
             {
-                System.out.println("here");
+                //System.out.println("here");
                 return 2; // already registered
             }
             else
             {
-                System.out.println("reached");
+                //System.out.println("reached");
                 return 1; // registration allowed or not registered
             }
 
@@ -483,11 +492,7 @@ public ArrayList<String> checkAt1am()
             array1.add(rs1.getString("vehicle_number"));
         }
 
-        for(String s : array1)
-        {
-            System.out.println("vehicles get from db : "+ s);
-        }
-        System.out.println("\n");
+       // System.out.println("\n");
 
         for (String o : array1) {
             String query2 = "Select * from parking_info where vehicle_number=?";
@@ -498,7 +503,7 @@ public ArrayList<String> checkAt1am()
             {
 
 
-                System.out.println(o);
+                //System.out.println(o);
                 String  new_Query = "Select * from registration_info where vehicle_number =?";
                 PreparedStatement st3 = con.prepareStatement(new_Query);
                 st3.setString(1,o);
@@ -514,7 +519,7 @@ public ArrayList<String> checkAt1am()
             {
                 rs.last();
                 String status = rs.getString("park_status");
-                System.out.println("here2  "+ status);
+//                System.out.println("here2  "+ status);
                 if (!status.equals("in"))
                 {
                     String query5 = "Select * from registration_info where vehicle_number = ?";
@@ -523,17 +528,17 @@ public ArrayList<String> checkAt1am()
                     ResultSet rs5 = st5.executeQuery();
                     while(rs5.next())
                     {
-                        System.out.println("out from parking here3  "+rs5.getString("email"));
+                        //System.out.println("out from parking here3  "+rs5.getString("email"));
                         array2.add(rs5.getString("email"));
                     }
 
-                    System.out.println(o.toString());
+                   // System.out.println(o.toString());
                 }
             }
         }
-        System.out.println("doing to return");
+
         return array2;
-        //System.out.println("returned from here");
+
     }
     catch(Exception ex)
     {

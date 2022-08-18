@@ -25,10 +25,13 @@ import java.util.Properties;
 public class notification {
 
     public static boolean sendEmail(String toEmail, String subject, String body) throws MessagingException, UnsupportedEncodingException {
-//        try
-//        {
-            final String fromEmail = "batool12547@gmail.com"; //requires valid gmail id
-            final String password = "opxoofmivkmonfkf"; // correct password for gmail id
+        try
+        {
+           // final String fromEmail = "batool12547@gmail.com"; //requires valid gmail id
+           // final String password = "opxoofmivkmonfkf"; // correct password for gmail id
+
+            final String fromEmail = "tasmiyabatool00@gmail.com";
+            final String password = "psyqtilnqxfqdcfn";
 
             Authenticator auth = new Authenticator() {
                 //override the getPasswordAuthentication method
@@ -65,15 +68,14 @@ public class notification {
 
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
             Transport.send(msg);
-
             System.out.println("EMail Sent Successfully!!");
             return true;
-//        }
-//
-//        catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

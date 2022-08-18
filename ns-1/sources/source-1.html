@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    96.8%
+    96.9%
   </span>
   <span class="absValue">
-    (30/31)
+    (31/32)
   </span>
 </td>
 </tr>
@@ -189,72 +189,73 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">114</i>&nbsp;            validation v = new validation();</b>
 <b class="fc"><i class="no-highlight">115</i>&nbsp;            if(!v.checkRegistration(new_entry))</b>
 <i class="no-highlight">116</i>&nbsp;            {
-<b class="fc"><i class="no-highlight">117</i>&nbsp;                return 1; //  invalid info</b>
-<i class="no-highlight">118</i>&nbsp;            }
-<i class="no-highlight">119</i>&nbsp;            else
-<i class="no-highlight">120</i>&nbsp;            {
-<b class="fc"><i class="no-highlight">121</i>&nbsp;                Database db = new Database();</b>
-<i class="no-highlight">122</i>&nbsp;
-<b class="fc"><i class="no-highlight">123</i>&nbsp;                int b = db.RegisterInfo(new_entry);</b>
-<b class="fc"><i class="no-highlight">124</i>&nbsp;                if (b == 1)</b>
-<i class="no-highlight">125</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">126</i>&nbsp;                    return 2;         //   already registered</b>
-<i class="no-highlight">127</i>&nbsp;                }
-<i class="no-highlight">128</i>&nbsp;                else  // if (b == 2)
-<i class="no-highlight">129</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">130</i>&nbsp;                    return 3;        //    successfully registered</b>
-<i class="no-highlight">131</i>&nbsp;
-<i class="no-highlight">132</i>&nbsp;                }
-<i class="no-highlight">133</i>&nbsp;            }
-<i class="no-highlight">134</i>&nbsp;    }
-<i class="no-highlight">135</i>&nbsp;
-<i class="no-highlight">136</i>&nbsp;    public static int doParking(parking new_status) throws SQLException, MessagingException, UnsupportedEncodingException {
-<b class="fc"><i class="no-highlight">137</i>&nbsp;            validation v = new validation();</b>
-<b class="fc"><i class="no-highlight">138</i>&nbsp;            if(!v.checkParking(new_status))</b>
-<i class="no-highlight">139</i>&nbsp;            {
-<b class="fc"><i class="no-highlight">140</i>&nbsp;                System.out.print(&quot;has returned here in controller&quot;);</b>
-<b class="fc"><i class="no-highlight">141</i>&nbsp;                return 1; //  invalid data&quot;</b>
-<i class="no-highlight">142</i>&nbsp;            }
-<i class="no-highlight">143</i>&nbsp;            else
-<i class="no-highlight">144</i>&nbsp;            {
-<b class="fc"><i class="no-highlight">145</i>&nbsp;                Database db = new Database();</b>
-<b class="fc"><i class="no-highlight">146</i>&nbsp;                int b = db.ParkingInfo(new_status);</b>
-<i class="no-highlight">147</i>&nbsp;
-<b class="fc"><i class="no-highlight">148</i>&nbsp;                if (b == 1)</b>
-<i class="no-highlight">149</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">150</i>&nbsp;                    return 2;      // already parked in</b>
-<i class="no-highlight">151</i>&nbsp;                }
-<b class="fc"><i class="no-highlight">152</i>&nbsp;                else if (b == 2)</b>
-<i class="no-highlight">153</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">154</i>&nbsp;                    return 3;       // already parked out</b>
-<i class="no-highlight">155</i>&nbsp;                }
-<b class="fc"><i class="no-highlight">156</i>&nbsp;                else if (b == 3)</b>
-<i class="no-highlight">157</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">158</i>&nbsp;                    return 4;       //successfully parked in</b>
-<i class="no-highlight">159</i>&nbsp;                }
-<b class="fc"><i class="no-highlight">160</i>&nbsp;                else if (b == 4)</b>
-<i class="no-highlight">161</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">162</i>&nbsp;                    return 5;        //successfully parked out</b>
-<i class="no-highlight">163</i>&nbsp;                }
-<i class="no-highlight">164</i>&nbsp;                else    // if (b == 8)
-<i class="no-highlight">165</i>&nbsp;                {
-<b class="fc"><i class="no-highlight">166</i>&nbsp;                    return 8 ;       //Response.status(400).entity(&quot;first u need to register your car then u can park&quot;).build();</b>
-<i class="no-highlight">167</i>&nbsp;                }
-<i class="no-highlight">168</i>&nbsp;            }
-<i class="no-highlight">169</i>&nbsp;    }
-<i class="no-highlight">170</i>&nbsp;
-<i class="no-highlight">171</i>&nbsp;    public static String carHistory(String car_name) throws SQLException
-<i class="no-highlight">172</i>&nbsp;    {
-<b class="fc"><i class="no-highlight">173</i>&nbsp;        Database db = new Database();</b>
-<b class="fc"><i class="no-highlight">174</i>&nbsp;        ArrayList&lt;parking&gt; array = db.check_history(car_name);</b>
-<b class="fc"><i class="no-highlight">175</i>&nbsp;        String out= &quot;&quot;;</b>
-<b class="fc"><i class="no-highlight">176</i>&nbsp;        for (parking p : array)</b>
-<i class="no-highlight">177</i>&nbsp;        {
-<b class="fc"><i class="no-highlight">178</i>&nbsp;            out= out + p.getVehicle_number()+ &quot;\t&quot;+ p.getDate()+ &quot;\t&quot;+p.getTime()+ &quot;\t&quot;+p.getPark_status() +&quot;\n&quot;;</b>
-<b class="fc"><i class="no-highlight">179</i>&nbsp;        }</b>
-<b class="fc"><i class="no-highlight">180</i>&nbsp;        return out;</b>
-<i class="no-highlight">181</i>&nbsp;    }
-<i class="no-highlight">182</i>&nbsp;}
+<b class="fc"><i class="no-highlight">117</i>&nbsp;                System.out.println(&quot;in valid info&quot;);</b>
+<b class="fc"><i class="no-highlight">118</i>&nbsp;                return 1; //  invalid info</b>
+<i class="no-highlight">119</i>&nbsp;            }
+<i class="no-highlight">120</i>&nbsp;            else
+<i class="no-highlight">121</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">122</i>&nbsp;                Database db = new Database();</b>
+<i class="no-highlight">123</i>&nbsp;
+<b class="fc"><i class="no-highlight">124</i>&nbsp;                int b = db.RegisterInfo(new_entry);</b>
+<b class="fc"><i class="no-highlight">125</i>&nbsp;                if (b == 1)</b>
+<i class="no-highlight">126</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">127</i>&nbsp;                    return 2;         //   already registered</b>
+<i class="no-highlight">128</i>&nbsp;                }
+<i class="no-highlight">129</i>&nbsp;                else  // if (b == 2)
+<i class="no-highlight">130</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">131</i>&nbsp;                    return 3;        //    successfully registered</b>
+<i class="no-highlight">132</i>&nbsp;
+<i class="no-highlight">133</i>&nbsp;                }
+<i class="no-highlight">134</i>&nbsp;            }
+<i class="no-highlight">135</i>&nbsp;    }
+<i class="no-highlight">136</i>&nbsp;
+<i class="no-highlight">137</i>&nbsp;    public static int doParking(parking new_status) throws SQLException, MessagingException, UnsupportedEncodingException {
+<b class="fc"><i class="no-highlight">138</i>&nbsp;            validation v = new validation();</b>
+<b class="fc"><i class="no-highlight">139</i>&nbsp;            if(!v.checkParking(new_status))</b>
+<i class="no-highlight">140</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">141</i>&nbsp;                System.out.println(&quot;in valid info&quot;);</b>
+<b class="fc"><i class="no-highlight">142</i>&nbsp;                return 1; //  invalid data&quot;</b>
+<i class="no-highlight">143</i>&nbsp;            }
+<i class="no-highlight">144</i>&nbsp;            else
+<i class="no-highlight">145</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">146</i>&nbsp;                Database db = new Database();</b>
+<b class="fc"><i class="no-highlight">147</i>&nbsp;                int b = db.ParkingInfo(new_status);</b>
+<i class="no-highlight">148</i>&nbsp;
+<b class="fc"><i class="no-highlight">149</i>&nbsp;                if (b == 1)</b>
+<i class="no-highlight">150</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">151</i>&nbsp;                    return 2;      // already parked in</b>
+<i class="no-highlight">152</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">153</i>&nbsp;                else if (b == 2)</b>
+<i class="no-highlight">154</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">155</i>&nbsp;                    return 3;       // already parked out</b>
+<i class="no-highlight">156</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">157</i>&nbsp;                else if (b == 3)</b>
+<i class="no-highlight">158</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">159</i>&nbsp;                    return 4;       //successfully parked in</b>
+<i class="no-highlight">160</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">161</i>&nbsp;                else if (b == 4)</b>
+<i class="no-highlight">162</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">163</i>&nbsp;                    return 5;        //successfully parked out</b>
+<i class="no-highlight">164</i>&nbsp;                }
+<i class="no-highlight">165</i>&nbsp;                else    // if (b == 8)
+<i class="no-highlight">166</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">167</i>&nbsp;                    return 8 ;       //Response.status(400).entity(&quot;first u need to register your car then u can park&quot;).build();</b>
+<i class="no-highlight">168</i>&nbsp;                }
+<i class="no-highlight">169</i>&nbsp;            }
+<i class="no-highlight">170</i>&nbsp;    }
+<i class="no-highlight">171</i>&nbsp;
+<i class="no-highlight">172</i>&nbsp;    public static String carHistory(String car_name) throws SQLException
+<i class="no-highlight">173</i>&nbsp;    {
+<b class="fc"><i class="no-highlight">174</i>&nbsp;        Database db = new Database();</b>
+<b class="fc"><i class="no-highlight">175</i>&nbsp;        ArrayList&lt;parking&gt; array = db.check_history(car_name);</b>
+<b class="fc"><i class="no-highlight">176</i>&nbsp;        String out= &quot;&quot;;</b>
+<b class="fc"><i class="no-highlight">177</i>&nbsp;        for (parking p : array)</b>
+<i class="no-highlight">178</i>&nbsp;        {
+<b class="fc"><i class="no-highlight">179</i>&nbsp;            out= out + p.getVehicle_number()+ &quot;\t&quot;+ p.getDate()+ &quot;\t&quot;+p.getTime()+ &quot;\t&quot;+p.getPark_status() +&quot;\n&quot;;</b>
+<b class="fc"><i class="no-highlight">180</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">181</i>&nbsp;        return out;</b>
+<i class="no-highlight">182</i>&nbsp;    }
+<i class="no-highlight">183</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -281,7 +282,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-08-18 01:35</div>
+    <div style="float:right;">generated on 2022-08-18 22:15</div>
 </div>
 </body>
 </html>

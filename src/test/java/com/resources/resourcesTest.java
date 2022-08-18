@@ -21,7 +21,20 @@ class resourcesTest {
                 "          \"garage_number\":1,\n" +
                 "          \"vehicle_number\": \"MNB-9090\"\n" +
                 "    }");
-        assertEquals(200,res.getStatus()); // already
+        assertEquals(200,res.getStatus()); // already registered
+    }
+    @Test
+    void registration1() throws Exception {
+        resources r = new resources();
+        Response res = r.Registration("    {\n" +
+                "          \"first_name\": \"shakeel\",\n" +
+                "          \"last_name\": \"ahmad\",\n" +
+                "          \"email\": \"aftablaiba6@gmail.com\",\n" +
+                "          \"contact_number\": \"33111444599\",\n" +
+                "          \"garage_number\":1,\n" +
+                "          \"vehicle_number\": \"GTL-5877\"\n" +
+                "    }");
+        assertEquals(200,res.getStatus()); // already registered
     }
     @Test
     void registration2() throws Exception {
@@ -33,7 +46,19 @@ class resourcesTest {
                 "          \"garage_number\":1,\n" +
                 "          \"vehicle_number\": \"MNB-9090\"\n" +
                 "    }");
-        assertEquals(400,res.getStatus()); // invalid f name
+        assertEquals(400,res.getStatus()); // invalid first name
+    }
+    @Test
+    void registration4() throws Exception {
+        resources r = new resources();
+        Response res = r.Registration("{\n" +
+                "          \"first_name\": \"shakeel\",\n" +
+                "          \"email\": \"aftablaiba6@gmail.com\",\n" +
+                "          \"contact_number\": \"33111444599\",\n" +
+                "          \"garage_number\":1,\n" +
+                "          \"vehicle_number\": \"MNB-9090\"\n" +
+                "    }");
+        assertEquals(400,res.getStatus()); // invalid last name
     }
     @Test
     void registration3() throws Exception {
@@ -46,7 +71,20 @@ class resourcesTest {
                 "          \"garage_number\":1,\n" +
                 "          \"vehicle_number\": \"SDK-9090\"\n" +
                 "    }");
-        assertEquals(200,res.getStatus()); // sucessfully
+        assertEquals(200,res.getStatus()); // successfully registered
+    }
+    @Test
+    void registration5() throws Exception {
+        resources r = new resources();
+        Response res =r.Registration("    {\n" +
+                "          \"first_name\": \"jameel\",\n" +
+                "          \"last_name\": \"ahmad\",\n" +
+                "          \"email\": \"aftablaiba6@gmail.com\",\n" +
+                "          \"contact_number\": \"33111444599\",\n" +
+                "          \"garage_number\":1,\n" +
+                "          \"vehicle_number\": \"hzl-9090\"\n" +
+                "    }");
+        assertEquals(200,res.getStatus()); // successfully registered
     }
 
     @Test

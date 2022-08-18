@@ -114,6 +114,7 @@ public class Controller
             validation v = new validation();
             if(!v.checkRegistration(new_entry))
             {
+                System.out.println("in valid info");
                 return 1; //  invalid info
             }
             else
@@ -137,7 +138,7 @@ public class Controller
             validation v = new validation();
             if(!v.checkParking(new_status))
             {
-                System.out.print("has returned here in controller");
+                System.out.println("in valid info");
                 return 1; //  invalid data"
             }
             else

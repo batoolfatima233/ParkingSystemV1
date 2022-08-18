@@ -47,10 +47,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    95.8%
+    85.2%
   </span>
   <span class="absValue">
-    (23/24)
+    (23/27)
   </span>
 </td>
 </tr>
@@ -85,10 +85,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    96.2%
+    86.2%
   </span>
   <span class="absValue">
-    (25/26)
+    (25/29)
   </span>
 </td>
 </tr>
@@ -126,58 +126,59 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc"><i class="no-highlight">25</i>&nbsp;public class notification {</b>
 <i class="no-highlight">26</i>&nbsp;
 <i class="no-highlight">27</i>&nbsp;    public static boolean sendEmail(String toEmail, String subject, String body) throws MessagingException, UnsupportedEncodingException {
-<i class="no-highlight">28</i>&nbsp;//        try
-<i class="no-highlight">29</i>&nbsp;//        {
-<b class="fc"><i class="no-highlight">30</i>&nbsp;            final String fromEmail = &quot;batool12547@gmail.com&quot;; //requires valid gmail id</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;            final String password = &quot;opxoofmivkmonfkf&quot;; // correct password for gmail id</b>
-<i class="no-highlight">32</i>&nbsp;
-<b class="fc"><i class="no-highlight">33</i>&nbsp;            Authenticator auth = new Authenticator() {</b>
-<i class="no-highlight">34</i>&nbsp;                //override the getPasswordAuthentication method
-<i class="no-highlight">35</i>&nbsp;                protected PasswordAuthentication getPasswordAuthentication() {
-<b class="fc"><i class="no-highlight">36</i>&nbsp;                    return new PasswordAuthentication(fromEmail, password);</b>
-<i class="no-highlight">37</i>&nbsp;                }
-<i class="no-highlight">38</i>&nbsp;            };
-<i class="no-highlight">39</i>&nbsp;
-<b class="fc"><i class="no-highlight">40</i>&nbsp;            Properties props = new Properties();</b>
-<b class="fc"><i class="no-highlight">41</i>&nbsp;            props.put(&quot;mail.smtp.host&quot;, &quot;smtp.gmail.com&quot;); //SMTP Host</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;            props.put(&quot;mail.smtp.port&quot;, &quot;587&quot;); //TLS Port</b>
-<b class="fc"><i class="no-highlight">43</i>&nbsp;            props.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;); //enable authentication</b>
-<i class="no-highlight">44</i>&nbsp;            //props.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;); //enable STARTTLS
-<i class="no-highlight">45</i>&nbsp;
-<b class="fc"><i class="no-highlight">46</i>&nbsp;            Session session = Session.getInstance(props, auth);</b>
-<b class="fc"><i class="no-highlight">47</i>&nbsp;            session.getProperties().put(&quot;mail.smtp.ssl.trust&quot;, &quot;smtp.gmail.com&quot;);</b>
-<b class="fc"><i class="no-highlight">48</i>&nbsp;            session.getProperties().put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);</b>
-<b class="fc"><i class="no-highlight">49</i>&nbsp;            MimeMessage msg = new MimeMessage(session);</b>
-<i class="no-highlight">50</i>&nbsp;
-<i class="no-highlight">51</i>&nbsp;            //set message headers
-<b class="fc"><i class="no-highlight">52</i>&nbsp;            msg.addHeader(&quot;Content-type&quot;, &quot;text/HTML; charset=UTF-8&quot;);</b>
-<b class="fc"><i class="no-highlight">53</i>&nbsp;            msg.addHeader(&quot;format&quot;, &quot;flowed&quot;);</b>
-<b class="fc"><i class="no-highlight">54</i>&nbsp;            msg.addHeader(&quot;Content-Transfer-Encoding&quot;, &quot;8bit&quot;);</b>
-<i class="no-highlight">55</i>&nbsp;
-<b class="fc"><i class="no-highlight">56</i>&nbsp;            msg.setFrom(new InternetAddress(&quot;batool12547@gmail.com&quot;, &quot;NoReply-JD&quot;));</b>
+<i class="no-highlight">28</i>&nbsp;        try
+<i class="no-highlight">29</i>&nbsp;        {
+<i class="no-highlight">30</i>&nbsp;           // final String fromEmail = &quot;batool12547@gmail.com&quot;; //requires valid gmail id
+<i class="no-highlight">31</i>&nbsp;           // final String password = &quot;opxoofmivkmonfkf&quot;; // correct password for gmail id
+<b class="fc"><i class="no-highlight">32</i>&nbsp;            final String fromEmail = &quot;tasmiyabatool00@gmail.com&quot;;</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;            final String password = &quot;psyqtilnqxfqdcfn&quot;;</b>
+<i class="no-highlight">34</i>&nbsp;
+<b class="fc"><i class="no-highlight">35</i>&nbsp;            Authenticator auth = new Authenticator() {</b>
+<i class="no-highlight">36</i>&nbsp;                //override the getPasswordAuthentication method
+<i class="no-highlight">37</i>&nbsp;                protected PasswordAuthentication getPasswordAuthentication() {
+<b class="fc"><i class="no-highlight">38</i>&nbsp;                    return new PasswordAuthentication(fromEmail, password);</b>
+<i class="no-highlight">39</i>&nbsp;                }
+<i class="no-highlight">40</i>&nbsp;            };
+<i class="no-highlight">41</i>&nbsp;
+<b class="fc"><i class="no-highlight">42</i>&nbsp;            Properties props = new Properties();</b>
+<b class="fc"><i class="no-highlight">43</i>&nbsp;            props.put(&quot;mail.smtp.host&quot;, &quot;smtp.gmail.com&quot;); //SMTP Host</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;            props.put(&quot;mail.smtp.port&quot;, &quot;587&quot;); //TLS Port</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;            props.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;); //enable authentication</b>
+<i class="no-highlight">46</i>&nbsp;            //props.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;); //enable STARTTLS
+<i class="no-highlight">47</i>&nbsp;
+<b class="fc"><i class="no-highlight">48</i>&nbsp;            Session session = Session.getInstance(props, auth);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            session.getProperties().put(&quot;mail.smtp.ssl.trust&quot;, &quot;smtp.gmail.com&quot;);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;            session.getProperties().put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;            MimeMessage msg = new MimeMessage(session);</b>
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;            //set message headers
+<b class="fc"><i class="no-highlight">54</i>&nbsp;            msg.addHeader(&quot;Content-type&quot;, &quot;text/HTML; charset=UTF-8&quot;);</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;            msg.addHeader(&quot;format&quot;, &quot;flowed&quot;);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;            msg.addHeader(&quot;Content-Transfer-Encoding&quot;, &quot;8bit&quot;);</b>
 <i class="no-highlight">57</i>&nbsp;
-<b class="fc"><i class="no-highlight">58</i>&nbsp;            msg.setReplyTo(InternetAddress.parse(&quot;batool12547@gmail.com&quot;, false));</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;            msg.setFrom(new InternetAddress(&quot;batool12547@gmail.com&quot;, &quot;NoReply-JD&quot;));</b>
 <i class="no-highlight">59</i>&nbsp;
-<b class="fc"><i class="no-highlight">60</i>&nbsp;            msg.setSubject(subject, &quot;UTF-8&quot;);</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;            msg.setReplyTo(InternetAddress.parse(&quot;batool12547@gmail.com&quot;, false));</b>
 <i class="no-highlight">61</i>&nbsp;
-<b class="fc"><i class="no-highlight">62</i>&nbsp;            msg.setText(body, &quot;UTF-8&quot;);</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;            msg.setSubject(subject, &quot;UTF-8&quot;);</b>
 <i class="no-highlight">63</i>&nbsp;
-<b class="fc"><i class="no-highlight">64</i>&nbsp;            msg.setSentDate(new Date());</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;            msg.setText(body, &quot;UTF-8&quot;);</b>
 <i class="no-highlight">65</i>&nbsp;
-<b class="fc"><i class="no-highlight">66</i>&nbsp;            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));</b>
-<b class="fc"><i class="no-highlight">67</i>&nbsp;            Transport.send(msg);</b>
-<i class="no-highlight">68</i>&nbsp;
-<b class="fc"><i class="no-highlight">69</i>&nbsp;            System.out.println(&quot;EMail Sent Successfully!!&quot;);</b>
-<b class="fc"><i class="no-highlight">70</i>&nbsp;            return true;</b>
-<i class="no-highlight">71</i>&nbsp;//        }
-<i class="no-highlight">72</i>&nbsp;//
-<i class="no-highlight">73</i>&nbsp;//        catch (Exception e) {
-<i class="no-highlight">74</i>&nbsp;//            e.printStackTrace();
-<i class="no-highlight">75</i>&nbsp;//            return false;
-<i class="no-highlight">76</i>&nbsp;//        }
-<i class="no-highlight">77</i>&nbsp;    }
-<i class="no-highlight">78</i>&nbsp;}
-<i class="no-highlight">79</i>&nbsp;
+<b class="fc"><i class="no-highlight">66</i>&nbsp;            msg.setSentDate(new Date());</b>
+<i class="no-highlight">67</i>&nbsp;
+<b class="fc"><i class="no-highlight">68</i>&nbsp;            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;            Transport.send(msg);</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;            System.out.println(&quot;EMail Sent Successfully!!&quot;);</b>
+<b class="fc"><i class="no-highlight">71</i>&nbsp;            return true;</b>
+<i class="no-highlight">72</i>&nbsp;        }
+<i class="no-highlight">73</i>&nbsp;
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        catch (Exception e) {</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;            return false;</b>
+<i class="no-highlight">77</i>&nbsp;        }
+<i class="no-highlight">78</i>&nbsp;    }
+<i class="no-highlight">79</i>&nbsp;}
+<i class="no-highlight">80</i>&nbsp;
 </div>
 </pre>
 </div>
@@ -204,7 +205,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-08-18 01:35</div>
+    <div style="float:right;">generated on 2022-08-18 22:15</div>
 </div>
 </body>
 </html>

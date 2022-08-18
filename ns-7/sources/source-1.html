@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    59%
+    100%
   </span>
   <span class="absValue">
-    (46/78)
+    (34/34)
   </span>
 </td>
 </tr>
@@ -87,72 +87,85 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">12</i>&nbsp;import javax.ws.rs.core.Response;
 <i class="no-highlight">13</i>&nbsp;
 <i class="no-highlight">14</i>&nbsp;import java.sql.SQLException;
-<i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;import static com.example.parkingsystemv1.Controller.Controller.*;
-<i class="no-highlight">17</i>&nbsp;
-<i class="no-highlight">18</i>&nbsp;@Path(&quot;/end-point&quot;)
-<b class="fc"><i class="no-highlight">19</i>&nbsp;public class resources {</b>
-<i class="no-highlight">20</i>&nbsp;
-<i class="no-highlight">21</i>&nbsp;    @POST
-<i class="no-highlight">22</i>&nbsp;    @Path(&quot;/registration&quot;)
-<i class="no-highlight">23</i>&nbsp;    public Response Registration(String payload) throws Exception {
+<i class="no-highlight">15</i>&nbsp;import java.util.Objects;
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;import static com.example.parkingsystemv1.Controller.Controller.*;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;@Path(&quot;/end-point&quot;)
+<b class="fc"><i class="no-highlight">20</i>&nbsp;public class resources {</b>
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @POST
+<i class="no-highlight">23</i>&nbsp;    @Path(&quot;/registration&quot;)
 <i class="no-highlight">24</i>&nbsp;
-<b class="fc"><i class="no-highlight">25</i>&nbsp;            Registration new_entry = new Gson().fromJson(payload, Registration.class);</b>
-<b class="fc"><i class="no-highlight">26</i>&nbsp;</b>
-<b class="fc"><i class="no-highlight">27</i>&nbsp;            int result = doRegistration(new_entry);</b>
-<b class="fc"><i class="no-highlight">28</i>&nbsp;</b>
-<b class="fc"><i class="no-highlight">29</i>&nbsp;            if (result == 1) {</b>
-<b class="fc"><i class="no-highlight">30</i>&nbsp;                return Response.status(400).entity(&quot;in valid input&quot;).build();</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;            } else if (result == 2) {</b>
-<b class="fc"><i class="no-highlight">32</i>&nbsp;                return Response.ok(&quot;already registered&quot;).build();</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;            } else //if (result == 3) {</b>
-<b class="fc"><i class="no-highlight">34</i>&nbsp;                return Response.ok(&quot;successfully registered&quot;).build();</b>
-<b class="nc"><i class="no-highlight">35</i>&nbsp;    }</b>
-<b class="nc"><i class="no-highlight">36</i>&nbsp;</b>
-<b class="nc"><i class="no-highlight">37</i>&nbsp;    @POST</b>
-<i class="no-highlight">38</i>&nbsp;    @Path(&quot;parking&quot;)
-<b class="nc"><i class="no-highlight">39</i>&nbsp;    public Response Parking(String payload) throws Exception {</b>
-<b class="fc"><i class="no-highlight">40</i>&nbsp;        System.out.println(payload);</b>
-<b class="fc"><i class="no-highlight">41</i>&nbsp;            parking new_status = new Gson().fromJson(payload, parking.class);</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;            int result = doParking(new_status);</b>
-<b class="fc"><i class="no-highlight">43</i>&nbsp;            if (result == 1) {</b>
-<b class="fc"><i class="no-highlight">44</i>&nbsp;                return Response.status(400).entity(&quot;invalid data&quot;).build();</b>
-<b class="fc"><i class="no-highlight">45</i>&nbsp;            } else if (result == 2) {</b>
-<b class="fc"><i class="no-highlight">46</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have already parked in&quot;).build();</b>
-<b class="fc"><i class="no-highlight">47</i>&nbsp;            } else if (result == 3) {</b>
-<b class="fc"><i class="no-highlight">48</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have already parked out&quot;).build();</b>
-<b class="fc"><i class="no-highlight">49</i>&nbsp;            } else if (result == 4) {</b>
-<b class="fc"><i class="no-highlight">50</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have successfully parked in&quot;).build();</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;            } else if (result == 5) {</b>
-<b class="fc"><i class="no-highlight">52</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have successfully parked out&quot;).build();</b>
-<b class="fc"><i class="no-highlight">53</i>&nbsp;            } else // if (result == 8)</b>
-<b class="fc"><i class="no-highlight">54</i>&nbsp;            {</b>
-<b class="fc"><i class="no-highlight">55</i>&nbsp;                return Response.status(400).entity(&quot;first register your car then do parking&quot;).build();</b>
-<b class="nc"><i class="no-highlight">56</i>&nbsp;            }</b>
-<b class="fc"><i class="no-highlight">57</i>&nbsp;    }</b>
-<b class="fc"><i class="no-highlight">58</i>&nbsp;</b>
-<b class="fc"><i class="no-highlight">59</i>&nbsp;    @GET</b>
-<b class="nc"><i class="no-highlight">60</i>&nbsp;    @Path(&quot;park_history&quot;)</b>
-<b class="nc"><i class="no-highlight">61</i>&nbsp;    public Response History(@QueryParam(&quot;vehicle-name&quot;) String name) throws SQLException {</b>
-<b class="fc"><i class="no-highlight">62</i>&nbsp;            Database db = new Database();</b>
-<b class="fc"><i class="no-highlight">63</i>&nbsp;            int check = db.check_registration(name);</b>
-<b class="fc"><i class="no-highlight">64</i>&nbsp;            if( check == 1) {</b>
-<b class="fc"><i class="no-highlight">65</i>&nbsp;                return Response.status(200).entity(&quot;this car is not registered yet&quot;).build();}</b>
-<b class="nc"><i class="no-highlight">66</i>&nbsp;            else {</b>
-<b class="fc"><i class="no-highlight">67</i>&nbsp;                String output = carHistory(name);</b>
-<b class="fc"><i class="no-highlight">68</i>&nbsp;                System.out.println(output);</b>
-<b class="fc"><i class="no-highlight">69</i>&nbsp;                if(output != &quot;&quot;)</b>
-<b class="nc"><i class="no-highlight">70</i>&nbsp;                {</b>
-<b class="fc"><i class="no-highlight">71</i>&nbsp;                    return Response.ok().status(400).entity(output).build();</b>
-<b class="fc"><i class="no-highlight">72</i>&nbsp;                }</b>
-<b class="fc"><i class="no-highlight">73</i>&nbsp;                else</b>
-<b class="nc"><i class="no-highlight">74</i>&nbsp;                {</b>
-<b class="fc"><i class="no-highlight">75</i>&nbsp;                    return Response.status(200).entity(&quot;not parked yet, hence no parking history&quot;).build();</b>
-<i class="no-highlight">76</i>&nbsp;                }
-<b class="nc"><i class="no-highlight">77</i>&nbsp;            }</b>
-<b class="nc"><i class="no-highlight">78</i>&nbsp;    }</b>
-<b class="fc"><i class="no-highlight">79</i>&nbsp;}</b>
-<b class="fc"><i class="no-highlight">80</i>&nbsp;</b>
+<i class="no-highlight">25</i>&nbsp;    public Response Registration(String payload) throws Exception
+<i class="no-highlight">26</i>&nbsp;    {
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        Registration new_entry = new Gson().fromJson(payload, Registration.class);</b>
+<i class="no-highlight">28</i>&nbsp;
+<b class="fc"><i class="no-highlight">29</i>&nbsp;            int result = doRegistration(new_entry);</b>
+<i class="no-highlight">30</i>&nbsp;
+<b class="fc"><i class="no-highlight">31</i>&nbsp;            if (result == 1)</b>
+<i class="no-highlight">32</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                System.out.println(&quot;result:  &quot;+result);</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;                return Response.status(400).entity(&quot;in valid input&quot;).build();</b>
+<i class="no-highlight">35</i>&nbsp;            }
+<b class="fc"><i class="no-highlight">36</i>&nbsp;            else if (result == 2)</b>
+<i class="no-highlight">37</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">38</i>&nbsp;                System.out.println(&quot;result:  &quot;+result);</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;                return Response.ok().status(200).entity(&quot;already registered&quot;).build();</b>
+<i class="no-highlight">40</i>&nbsp;            }
+<i class="no-highlight">41</i>&nbsp;            else
+<i class="no-highlight">42</i>&nbsp;            {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;                System.out.println(&quot;result:  &quot;+result);</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;                return Response.ok().status(200).entity(&quot;successfully registered&quot;).build();</b>
+<i class="no-highlight">45</i>&nbsp;            }
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;    @POST
+<i class="no-highlight">49</i>&nbsp;    @Path(&quot;parking&quot;)
+<i class="no-highlight">50</i>&nbsp;
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    public Response Parking(String payload) throws Exception {
+<i class="no-highlight">53</i>&nbsp;       // System.out.println(payload);
+<b class="fc"><i class="no-highlight">54</i>&nbsp;            parking new_status = new Gson().fromJson(payload, parking.class);</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;            int result = doParking(new_status);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;            if (result == 1) {</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;                return Response.status(400).entity(&quot;invalid data&quot;).build();</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;            } else if (result == 2) {</b>
+<b class="fc"><i class="no-highlight">59</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have already parked in&quot;).build();</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;            } else if (result == 3) {</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have already parked out&quot;).build();</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;            } else if (result == 4) {</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have successfully parked in&quot;).build();</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;            } else if (result == 5) {</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;                return Response.ok().status(200).entity(&quot;you have successfully parked out&quot;).build();</b>
+<i class="no-highlight">66</i>&nbsp;            } else {
+<b class="fc"><i class="no-highlight">67</i>&nbsp;                return Response.status(400).entity(&quot;first register your car then do parking&quot;).build();</b>
+<i class="no-highlight">68</i>&nbsp;            }
+<i class="no-highlight">69</i>&nbsp;    }
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    @GET
+<i class="no-highlight">72</i>&nbsp;    @Path(&quot;park_history&quot;)
+<i class="no-highlight">73</i>&nbsp;
+<i class="no-highlight">74</i>&nbsp;    public Response History(@QueryParam(&quot;vehicle-name&quot;) String name) throws SQLException {
+<b class="fc"><i class="no-highlight">75</i>&nbsp;            Database db = new Database();</b>
+<b class="fc"><i class="no-highlight">76</i>&nbsp;            int check = db.check_registration(name);</b>
+<b class="fc"><i class="no-highlight">77</i>&nbsp;            if( check == 1) {</b>
+<b class="fc"><i class="no-highlight">78</i>&nbsp;                System.out.print(&quot;this car is not registered yet&quot;);</b>
+<b class="fc"><i class="no-highlight">79</i>&nbsp;                return Response.status(200).entity(&quot;this car is not registered yet&quot;).build();}</b>
+<i class="no-highlight">80</i>&nbsp;            else {
+<b class="fc"><i class="no-highlight">81</i>&nbsp;                String output = carHistory(name);</b>
+<b class="fc"><i class="no-highlight">82</i>&nbsp;                System.out.println(output);</b>
+<b class="fc"><i class="no-highlight">83</i>&nbsp;                if(!Objects.equals(output, &quot;&quot;))</b>
+<i class="no-highlight">84</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">85</i>&nbsp;                    return Response.ok().status(400).entity(output).build();</b>
+<i class="no-highlight">86</i>&nbsp;                }
+<i class="no-highlight">87</i>&nbsp;                else
+<i class="no-highlight">88</i>&nbsp;                {
+<b class="fc"><i class="no-highlight">89</i>&nbsp;                    return Response.status(200).entity(&quot;not parked yet, hence no parking history&quot;).build();</b>
+<i class="no-highlight">90</i>&nbsp;                }
+<i class="no-highlight">91</i>&nbsp;            }
+<i class="no-highlight">92</i>&nbsp;    }
+<i class="no-highlight">93</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -179,7 +192,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-08-18 01:35</div>
+    <div style="float:right;">generated on 2022-08-18 22:15</div>
 </div>
 </body>
 </html>

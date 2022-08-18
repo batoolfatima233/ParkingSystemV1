@@ -21,24 +21,36 @@ public class resources {
 
     @POST
     @Path("/registration")
-    public Response Registration(String payload) throws Exception {
 
-            Registration new_entry = new Gson().fromJson(payload, Registration.class);
+    public Response Registration(String payload) throws Exception
+    {
+        Registration new_entry = new Gson().fromJson(payload, Registration.class);
 
             int result = doRegistration(new_entry);
 
-            if (result == 1) {
+            if (result == 1)
+            {
+                System.out.println("result:  "+result);
                 return Response.status(400).entity("in valid input").build();
-            } else if (result == 2) {
-                return Response.ok("already registered").build();
-            } else //if (result == 3) {
-                return Response.ok("successfully registered").build();
+            }
+            else if (result == 2)
+            {
+                System.out.println("result:  "+result);
+                return Response.ok().status(200).entity("already registered").build();
+            }
+            else
+            {
+                System.out.println("result:  "+result);
+                return Response.ok().status(200).entity("successfully registered").build();
+            }
     }
 
     @POST
     @Path("parking")
+
+
     public Response Parking(String payload) throws Exception {
-        System.out.println(payload);
+       // System.out.println(payload);
             parking new_status = new Gson().fromJson(payload, parking.class);
             int result = doParking(new_status);
             if (result == 1) {
@@ -51,18 +63,19 @@ public class resources {
                 return Response.ok().status(200).entity("you have successfully parked in").build();
             } else if (result == 5) {
                 return Response.ok().status(200).entity("you have successfully parked out").build();
-            } else // if (result == 8)
-            {
+            } else {
                 return Response.status(400).entity("first register your car then do parking").build();
             }
     }
 
     @GET
     @Path("park_history")
+
     public Response History(@QueryParam("vehicle-name") String name) throws SQLException {
             Database db = new Database();
             int check = db.check_registration(name);
             if( check == 1) {
+                System.out.print("this car is not registered yet");
                 return Response.status(200).entity("this car is not registered yet").build();}
             else {
                 String output = carHistory(name);
@@ -78,4 +91,3 @@ public class resources {
             }
     }
 }
-

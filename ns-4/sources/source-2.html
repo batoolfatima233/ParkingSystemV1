@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    95.7%
+    100%
   </span>
   <span class="absValue">
-    (22/23)
+    (19/19)
   </span>
 </td>
 </tr>
@@ -90,7 +90,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">15</i>&nbsp;
 <i class="no-highlight">16</i>&nbsp;import javax.servlet.ServletException;
 <i class="no-highlight">17</i>&nbsp;import javax.servlet.http.HttpServlet;
-<b class="fc"><i class="no-highlight">18</i>&nbsp;</b>
+<i class="no-highlight">18</i>&nbsp;
 <b class="fc"><i class="no-highlight">19</i>&nbsp;public class Scheduler extends HttpServlet</b>
 <i class="no-highlight">20</i>&nbsp;{
 <i class="no-highlight">21</i>&nbsp;    public void init() throws ServletException {
@@ -99,14 +99,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">24</i>&nbsp;        Date date = new Date();</b>
 <b class="fc"><i class="no-highlight">25</i>&nbsp;        System.out.println(dateFormat.format(date));</b>
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        Calendar now = Calendar.getInstance();</b>
-<b class="fc"><i class="no-highlight">27</i>&nbsp;</b>
+<i class="no-highlight">27</i>&nbsp;
 <b class="fc"><i class="no-highlight">28</i>&nbsp;        int hour = now.get(Calendar.HOUR_OF_DAY);</b>
 <b class="fc"><i class="no-highlight">29</i>&nbsp;        int minute = now.get(Calendar.MINUTE);</b>
 <b class="fc"><i class="no-highlight">30</i>&nbsp;        System.out.println(hour + &quot;  &quot;+ minute);</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;</b>
+<i class="no-highlight">31</i>&nbsp;
 <i class="no-highlight">32</i>&nbsp;        try {
 <b class="fc"><i class="no-highlight">33</i>&nbsp;            JobDetail job1 = JobBuilder.newJob(Job1.class).withIdentity(&quot;Iterate&quot;, &quot;group1&quot;).build();</b>
-<b class="nc"><i class="no-highlight">34</i>&nbsp;</b>
+<i class="no-highlight">34</i>&nbsp;
 <b class="fc"><i class="no-highlight">35</i>&nbsp;            Trigger trigger1 = TriggerBuilder.newTrigger()</b>
 <b class="fc"><i class="no-highlight">36</i>&nbsp;                    .withIdentity(&quot;triggerIterate&quot;, &quot;group1&quot;)</b>
 <b class="fc"><i class="no-highlight">37</i>&nbsp;                    .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(12, 20))</b>
@@ -151,7 +151,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-08-18 01:35</div>
+    <div style="float:right;">generated on 2022-08-18 22:15</div>
 </div>
 </body>
 </html>
