@@ -1,0 +1,34 @@
+
+participant user
+
+participant application
+participant localStorage(queue)
+participant registration/parking processing
+participant cloud
+
+participant Scheduler
+
+
+user->application:request to register / request to park(in/out)
+activate user
+application->application:validate
+application->localStorage(queue):store
+#localStorage(queue)->application:do processing
+localStorage(queue)->registration/parking processing:process data
+activate cloud
+registration/parking processing-->cloud:upload data to cloud
+deactivate cloud
+
+registration/parking processing->application:once upload to cloud notify application
+
+application->user:notify
+deactivate user
+
+Scheduler-->>cloud:check missing car
+activate Scheduler
+
+Scheduler ->application: ask to notify
+deactivate Scheduler
+
+activate user
+application->user:notify
